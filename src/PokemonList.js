@@ -1,4 +1,6 @@
 import {useEffect, useState} from 'react';
+import PokemonCard from './PokemonCard'
+
 
 function PokemonList() {
     const [pokemon, setState] = useState({
@@ -32,6 +34,7 @@ function PokemonList() {
                     .then((pokeData) => {
                         const pokeObj = {
                             name: pokeSpecies.name,
+                            id: i + 1,
                             image: pokeData.sprites.front_default
                         }
                         pokeArray.push(pokeObj)
@@ -49,8 +52,8 @@ function PokemonList() {
     }, [])
     
     return (
-        <div>
-            {pokemon.fetched ? pokemon.species.map((p, idx) => { return <div key={idx}><p>{p.name}</p><img src={p.image} /></div>}) : "Loading..."}
+        <div class="grid">
+            {pokemon.fetched ? pokemon.species.map((p, idx) => { return <PokemonCard key={p.id} name={p.name} image={p.image} /> }) : "Loading..."}
         </div>
     )
 }
