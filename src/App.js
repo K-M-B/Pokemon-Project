@@ -1,18 +1,14 @@
 import './App.css';
-import PokemonList from './PokemonList';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import Main from './Main';
+import NavMenu from './NavMenu';
 
 function App() {
   
   
   return (
-    <div className="App">
-      <PokemonList />
+    <div>
+      <NavMenu />
+      <Main />
     </div>
   );
 }

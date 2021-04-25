@@ -1,8 +1,12 @@
 import {useEffect, useState} from 'react';
 import PokemonCard from './PokemonCard'
+import styles from './PokemonList.module.css'
+import PokemonDetail from './PokemonDetail'
+import { Link } from 'react-router-dom';
 
 
-function PokemonList() {
+
+function PokemonList({ handleClick }) {
     const [pokemon, setState] = useState({
         species: [],
         loading: false,
@@ -16,6 +20,8 @@ function PokemonList() {
         fetched: true
       })
     }
+
+    
   
     useEffect(() => {
       (async () => {
@@ -25,9 +31,9 @@ function PokemonList() {
               fetch('https://pokeapi.co/api/v2/pokemon?limit=1118')
               .then(response => { return response.json() })
               .then((data) => {
-                var pokeDone = 0;
                 let pokeArray = []
                 for (let i = 0; i <data.results.length; i++) {
+                    var pokeDone = 0;
                     const pokeSpecies = data.results[i];
                     fetch(pokeSpecies.url)
                     .then(response => { return response.json() })
@@ -52,8 +58,9 @@ function PokemonList() {
     }, [])
     
     return (
-        <div class="grid">
-            {pokemon.fetched ? pokemon.species.map((p, idx) => { return <PokemonCard key={p.id} name={p.name} image={p.image} /> }) : "Loading..."}
+        <div className={styles.grid}>
+            {pokemon.fetched ? pokemon.species.map((p, idx) => { return <PokemonCard key={p.id} id={p.id} name={p.name} image={p.image} handleClick={handleClick} /> }) : "Loading..."}
+            {/* {pokemon.fetched ? pokemon.species.map((p, idx) => { return <Link to={`/pokemon/${p.id}`}><PokemonCard key={p.id} id={p.id} name={p.name} image={p.image} /></Link> }) : "Loading..."} */}
         </div>
     )
 }
