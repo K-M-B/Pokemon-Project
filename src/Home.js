@@ -4,16 +4,8 @@ import PokemonDetail from './PokemonDetail'
 import { useState } from 'react'
 
 function Home() {
-    const [selectedPokemon, setSelectedPokemon] = useState(0);
-    const handleClick= (id) => {
-        setSelectedPokemon(id);
-    }
-
-    return(
-        <div className={styles.container}>
-        <PokemonDetail id={selectedPokemon} />
-        <PokemonList handleClick={handleClick} />
-        </div>
+    return (
+        <p>This is the home page!</p>
     )
 }
 

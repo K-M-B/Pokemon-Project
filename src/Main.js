@@ -1,13 +1,13 @@
 import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
-import PokemonList from './PokemonList';
+import Pokedex from './Pokedex';
 
 function Main() {
     return (
         <main>
             <Switch>
                 <Route exact path='/' component={Home} />
-                {/* <Route exact path='/pokemon' component={PokemonList} /> */}
+                <Route exact path='/pokemon' component={Pokedex} />
                 {/* <Route path='/pokemon/:number' component={PokemonDetail} /> */}
             </Switch>
         </main>
