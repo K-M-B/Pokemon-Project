@@ -7,7 +7,7 @@ import CACHE from './apiCache'
 
 
 
-function PokemonList({ handleClick }) {
+function PokemonList({ handleSelect }) {
     
     const [pokemon, setState] = useState({
         species: [],
@@ -22,20 +22,17 @@ function PokemonList({ handleClick }) {
         fetched: true
       })
     }
-
-    
   
     useEffect(() => {
       (async () => {
           if (CACHE["pokeArray"] !== undefined)
           {
-            console.log('using cached data');
             gotAllPokemon();
           }
           else{
             try {
-              console.log('should only see this once??')
                 setState({ loading: true});
+                // at the time of writing there are 1118 pokemon in the api
                 fetch('https://pokeapi.co/api/v2/pokemon?limit=1118')
                 .then(response => { return response.json() })
                 .then((data) => {
@@ -69,7 +66,7 @@ function PokemonList({ handleClick }) {
     
     return (
         <div className={styles.grid}>
-            {pokemon.fetched ? pokemon.species.map((p, idx) => { return <PokemonCard key={p.id} id={p.id} name={p.name} image={p.image} handleClick={handleClick} /> }) : "Loading..."}
+            {pokemon.fetched ? pokemon.species.map((p, idx) => { return <PokemonCard key={p.id} id={p.id} name={p.name} image={p.image} handleSelect={handleSelect} /> }) : "Loading..."}
             {/* {pokemon.fetched ? pokemon.species.map((p, idx) => { return <Link to={`/pokemon/${p.id}`}><PokemonCard key={p.id} id={p.id} name={p.name} image={p.image} /></Link> }) : "Loading..."} */}
         </div>
     )

@@ -1,22 +1,23 @@
 import PokemonDetail from './PokemonDetail'
 import PokemonList from './PokemonList'
 import {useEffect, useState} from 'react'
+import Pokemon from './PokemonClass'
 
 function Pokedex() {
     const [selectedPokemon, setSelectedPokemon] = useState(0);
-    const handleClick= (id) => {
-        console.log('id: ' + id);
+    
+    const handleSelect= (id) => {
         setSelectedPokemon(id);
     }
 
     useEffect(() => {
-        console.log('useEffect: ' + selectedPokemon);
+        
     })
 
     return(
         <div className="container">
-        { selectedPokemon !== undefined ? <PokemonDetail selectedPokemon={selectedPokemon} /> : "" }
-        <PokemonList handleClick={handleClick} />
+        { selectedPokemon !== undefined ? <PokemonDetail selectedPokemon={selectedPokemon}  /> : "" }
+        <PokemonList handleSelect={handleSelect} />
         </div>
     )
 }
