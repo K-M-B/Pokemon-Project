@@ -1,12 +1,13 @@
 
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function NavMenu() {
     return (
         <nav>
             <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/pokemon">Pokemon</Link></li>
+            <li><NavLink to="/" activeStyle={{ color:'green'}}>Home</ NavLink></li>
+            <li><NavLink to="/pokemon" activeStyle={{ color:'green'}}>Pokemon</ NavLink></li>
+            <li><NavLink to="/captured" activeStyle={{ color: 'green' }}>Captured Pokemon</NavLink></li>
             </ul>
         </nav>
     )

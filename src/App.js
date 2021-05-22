@@ -1,13 +1,16 @@
+import { BrowserRouter as Router} from 'react-router-dom'
 import './App.css';
-import Main from './Main';
+import Routes from './Routes'
 import NavMenu from './NavMenu';
 
 function App() {
   return (
+    <Router>
     <div>
-      <NavMenu />
-      <Main />
+    <NavMenu />
+    <Routes />
     </div>
+    </Router>
   );
 }
 
