@@ -2,9 +2,9 @@ import { useEffect, useState, Fragment } from 'react';
 import CACHE from './apiCache';
 import PokemonClass from './PokemonClass'
 
-function PokemonDetail( { selectedPokemon }) {
+function PokemonDetail( { selectedPokemon, capturedPokemon, handleCapture, handleRelease }) {
     const [pokemonData, setPokemonData] = useState({});
-    const [capturedPokemon, setCapturedPokemon] = useState([]);
+    //const [capturedPokemon, setCapturedPokemon] = useState([]);
     useEffect(() => {
         if (selectedPokemon != 0)
         {
@@ -34,25 +34,6 @@ function PokemonDetail( { selectedPokemon }) {
     useEffect(() => {
         console.log(capturedPokemon);
     }, [])
-
-    const handleCapture = (poke) => {
-        //let tempCaptured = capturedPokemon;
-        const tempCaptured = [...capturedPokemon];
-        tempCaptured.push(poke);
-        setCapturedPokemon(tempCaptured);
-        console.log('after capture');
-    }
-
-    const handleRelease = (poke) => {
-        const tempCaptured = [...capturedPokemon];
-        //tempCaptured.pop(poke);
-        const index = tempCaptured.indexOf(poke);
-        if (index > -1) {
-            tempCaptured.splice(index, 1);
-        }
-        setCapturedPokemon(tempCaptured);
-        console.log('after release')
-    }
    
     return (
         <div>
@@ -62,9 +43,9 @@ function PokemonDetail( { selectedPokemon }) {
                 <h3>{pokemonData.name}</h3>
                 <p>{pokemonData.types}</p>
             </div>
-            { capturedPokemon.includes(pokemonData.id) ? 
-                <button onClick={() => handleRelease(pokemonData.id)}>Release</button>
-             :  <button onClick={() => handleCapture(pokemonData.id)}>Capture</button>
+            { capturedPokemon.map( cp => cp.id).includes(pokemonData.id) ? 
+                <button onClick={() => handleRelease(pokemonData)}>Release</button>
+             :  <button onClick={() => handleCapture(pokemonData)}>Capture</button>
             }
             </Fragment> : "" }
         </div>
