@@ -3,7 +3,7 @@ import PokemonList from './PokemonList'
 import {useEffect, useState} from 'react'
 import Pokemon from './PokemonClass'
 
-function Pokedex( capturedPokemon, handleCapture, handleRelease) {
+function Pokedex() {
     const [selectedPokemon, setSelectedPokemon] = useState(0);
     const [capturedPokemon, setCapturedPokemon] = useState([]);
     
@@ -19,7 +19,7 @@ function Pokedex( capturedPokemon, handleCapture, handleRelease) {
 
     const handleRelease = (poke) => {
         const tempCaptured = [...capturedPokemon];
-        tempCaptured.splice(tempCaptured.findIndex(cp => cp.id === poke.id), 1);å
+        tempCaptured.splice(tempCaptured.findIndex(cp => cp.id === poke.id), 1);
         setCapturedPokemon(tempCaptured);
     }
 

@@ -4,7 +4,6 @@ import PokemonClass from './PokemonClass'
 
 function PokemonDetail( { selectedPokemon, capturedPokemon, handleCapture, handleRelease }) {
     const [pokemonData, setPokemonData] = useState({});
-    //const [capturedPokemon, setCapturedPokemon] = useState([]);
     useEffect(() => {
         if (selectedPokemon != 0)
         {
