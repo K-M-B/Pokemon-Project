@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 function NavMenu() {
     return (
-        <nav>
+        <nav role="navigation">
             <ul>
             <li><NavLink to="/" activeStyle={{ color:'green'}}>Home</ NavLink></li>
             <li><NavLink to="/pokemon" activeStyle={{ color:'green'}}>Pokemon</ NavLink></li>
