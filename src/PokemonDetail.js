@@ -32,9 +32,9 @@ function PokemonDetail( { selectedPokemon }) {
       }
     }, [selectedPokemon])
 
-    useEffect(() => {
-        console.log(state.capturedPokemon);
-    }, [])
+    // useEffect(() => {
+        
+    // }, [])
    
     return (
         <div>
@@ -44,10 +44,10 @@ function PokemonDetail( { selectedPokemon }) {
                 <h3>{pokemonData.name}</h3>
                 <p>{pokemonData.types}</p>
             </div>
-            {/* { state.capturedPokemon.map( cp => cp.id).includes(pokemonData.id) ?  */}
+            { state.capturedPokemon.map( cp => cp.id).includes(pokemonData.id) ? 
                 <button onClick={() => dispatch({type: 'RELEASE_POKEMON', payload: pokemonData})}>Release</button>
              :  <button onClick={() => dispatch({type: 'CAPTURE_POKEMON', payload: pokemonData})}>Capture</button>
-            {/* } */}
+            }
             </Fragment> : "" }
         </div>
     )

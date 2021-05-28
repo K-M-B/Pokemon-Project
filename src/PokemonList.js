@@ -65,7 +65,7 @@ function PokemonList({ handleSelect }) {
     }, [])
     
     return (
-        <div className={styles.grid}>
+        <div class="grid">
             {pokemon.fetched ? pokemon.species.map((p, idx) => { return <PokemonCard key={p.id} id={p.id} name={p.name} image={p.image} handleSelect={handleSelect} /> }) : "Loading..."}
             {/* {pokemon.fetched ? pokemon.species.map((p, idx) => { return <Link to={`/pokemon/${p.id}`}><PokemonCard key={p.id} id={p.id} name={p.name} image={p.image} /></Link> }) : "Loading..."} */}
         </div>
