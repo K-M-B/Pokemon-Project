@@ -13,6 +13,7 @@ function CapturedPokemon () {
     }
     return (
         <div class="container">
+            <h1>Captured Pokemon</h1>
             { selectedPokemon !== undefined && selectedPokemon > 0 ? <div><PokemonDetail selectedPokemon={selectedPokemon} /><Link to="/battle"><button>Battle</button></Link></div>: "" }
             
             <div class="grid">

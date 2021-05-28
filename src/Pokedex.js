@@ -16,6 +16,7 @@ function Pokedex() {
 
     return(
         <div className="container">
+        <h1>Pokedex</h1>
         { selectedPokemon !== undefined ? <PokemonDetail selectedPokemon={selectedPokemon} /> : "" }
         <PokemonList handleSelect={handleSelect} />
         </div>
