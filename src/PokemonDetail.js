@@ -1,8 +1,10 @@
-import { useEffect, useState, Fragment } from 'react';
+import { useEffect, useState, Fragment, useContext } from 'react';
 import CACHE from './apiCache';
 import PokemonClass from './PokemonClass'
+import { PokemonContext } from './PokemonContext';
 
-function PokemonDetail( { selectedPokemon, capturedPokemon, handleCapture, handleRelease }) {
+function PokemonDetail( { selectedPokemon }) {
+    const [state, dispatch] = useContext(PokemonContext);
     const [pokemonData, setPokemonData] = useState({});
     useEffect(() => {
         if (selectedPokemon != 0)
@@ -31,7 +33,7 @@ function PokemonDetail( { selectedPokemon, capturedPokemon, handleCapture, handl
     }, [selectedPokemon])
 
     useEffect(() => {
-        console.log(capturedPokemon);
+        console.log(state.capturedPokemon);
     }, [])
    
     return (
@@ -42,10 +44,10 @@ function PokemonDetail( { selectedPokemon, capturedPokemon, handleCapture, handl
                 <h3>{pokemonData.name}</h3>
                 <p>{pokemonData.types}</p>
             </div>
-            { capturedPokemon.map( cp => cp.id).includes(pokemonData.id) ? 
-                <button onClick={() => handleRelease(pokemonData)}>Release</button>
-             :  <button onClick={() => handleCapture(pokemonData)}>Capture</button>
-            }
+            {/* { state.capturedPokemon.map( cp => cp.id).includes(pokemonData.id) ?  */}
+                <button onClick={() => dispatch({type: 'RELEASE_POKEMON', payload: pokemonData})}>Release</button>
+             :  <button onClick={() => dispatch({type: 'CAPTURE_POKEMON', payload: pokemonData})}>Capture</button>
+            {/* } */}
             </Fragment> : "" }
         </div>
     )
